@@ -17,6 +17,8 @@
 
 - [1.debounce](./1.debounce.js)
 - [2.throttle](./2.throttle.js)
+- [3.deepClone](./3.deepClone.js)
+- [4.instanceOf](./4.instanceOf.js)
 
 ## Show your support
 

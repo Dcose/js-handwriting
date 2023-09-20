@@ -22,7 +22,3 @@ var throttle = function (fn, t) {
  * log('Hello B'); // Ignored (within 100ms)
  * setTimeout(() => log('Hello C'), 101); // Hello C
  */
-const log = throttle(console.log, 100);
-log('Hello A'); // Logged immediately
-log('Hello B'); // Ignored (within 100ms)
-setTimeout(() => log('Hello C'), 101); // Hello C
