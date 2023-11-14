@@ -9,7 +9,7 @@
 
 ## Author
 
-🧙 **shun**
+🧙 **dcose2**
 
 - Github: [@Dcose](https://github.com/Dcose)
 
