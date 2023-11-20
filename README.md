@@ -5,7 +5,7 @@
   </a>
 </p>
 
-> 本仓库仅用于记录和学习 JavaScript 手写题练习，答案仅为个人拙见，欢迎大家提供更多解法和建议。
+> 本仓库仅用于记录和学习 JavaScript 手写题练习，答案仅为学习产出，欢迎大家提供更多解法和建议。
 
 ## Author
 
@@ -17,8 +17,15 @@
 
 - [1.debounce](./1.debounce.js)
 - [2.throttle](./2.throttle.js)
-- [3.deepClone](./3.deepClone.js)
+- [3.deep-clone](./3.deep-clone.js)
 - [4.instanceOf](./4.instanceOf.js)
+- [5.bubble-sort](./5.bubble-sort.js)
+- [6.quick-sort](./6.quick-sort.js)
+- [7.extends](./7.extends.js)
+- [8.iterator](./8.iterator.js)
+- [9.event-bus](./9.event-bus.js)
+- [10.object-flat](./10.object-flat.js)
+- [11.async-concurrency-limit](./11.async-concurrency-limit.js)
 
 ## Show your support
 
