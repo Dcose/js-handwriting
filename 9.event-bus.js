@@ -191,17 +191,79 @@ EB.$on('key1', (name, age) => {
   console.log("I'm Subscribe to events A", name, age)
 })
 
-// once
-EB.$once('key1', (name, age) => {
-  console.log("I'm Subscribe to events B", name, age)
-})
+// // once
+// EB.$once('key1', (name, age) => {
+//   console.log("I'm Subscribe to events B", name, age)
+// })
 
-EB.$on('key2', (name) => {
-  console.log("I'm Subscribe to events C", name)
-})
+// EB.$on('key2', (name) => {
+//   console.log("I'm Subscribe to events C", name)
+// })
 
-// 发布事件
-EB.$emit('key1', 'TEST', 17)
-console.info('key1 too')
-EB.$emit('key1', 'TEST', 17)
-EB.$emit('key2', 'TEST')
+// // 发布事件
+// EB.$emit('key1', 'TEST', 17)
+// console.info('key1 too')
+// EB.$emit('key1', 'TEST', 17)
+// EB.$emit('key2', 'TEST')
+
+class EventEmitter {
+  constructor() {
+    this.cache = {}
+  }
+
+  on(name, fn) {
+    if (this.cache[name]) {
+      this.cache[name].push(fn)
+    } else {
+      this.cache[name] = [fn]
+    }
+  }
+
+  off(name, fn) {
+    const tasks = this.cache[name]
+    if (tasks) {
+      const index = tasks.findIndex((f) => f === fn || f.callback === fn)
+      if (index >= 0) {
+        tasks.splice(index, 1)
+      }
+    }
+  }
+
+  emit(name) {
+    if (this.cache[name]) {
+      const tasks = this.cache[name].slice()
+      for (let fn of tasks) {
+        fn()
+      }
+    }
+  }
+
+  emit(name, once = false) {
+    if (this.cache[name]) {
+      const tasks = this.cache[name].slice()
+      for (let fn of tasks) {
+        fn()
+      }
+      if (once) {
+        delete this.cache[name]
+      }
+    }
+  }
+}
+
+const eventBus = new EventEmitter()
+const task1 = () => {
+  console.log('task1')
+}
+const task2 = () => {
+  console.log('task2')
+}
+eventBus.on('task1', task1)
+eventBus.on('task2', task2)
+
+setTimeout(() => {
+  eventBus.emit('task1')
+  eventBus.emit('task2', true)
+  eventBus.emit('task1')
+  eventBus.emit('task2')
+}, 2000)
