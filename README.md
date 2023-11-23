@@ -29,6 +29,9 @@
 - [12.create](./12.create.js)
 - [13.some](./13.some.js)
 - [14.every](./14.every.js)
+- [15.findIndex](./15.findIndex.js)
+- [16.find](./16.find.js)
+- []()
 
 ## Show your support
 
