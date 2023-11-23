@@ -26,6 +26,9 @@
 - [9.event-bus](./9.event-bus.js)
 - [10.object-flat](./10.object-flat.js)
 - [11.async-concurrency-limit](./11.async-concurrency-limit.js)
+- [12.create](./12.create.js)
+- [13.some](./13.some.js)
+- [14.every](./14.every.js)
 
 ## Show your support
 
