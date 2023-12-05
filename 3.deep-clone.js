@@ -1,14 +1,7 @@
-// 方式一
+//! Method one
 // const newObj = JSON.parse(JSON.stringify(oldObj));
 
-// 方式二
-/**
- * @description
- *
- * @param {Object} obj - 要深克隆的对象
- * @returns {Object} - 深克隆后的对象
- */
-
+//! Method two
 // function deepClone(obj) {
 //   if (typeof obj !== 'object' || obj === null) return obj;
 //   const cloneTarget = Array.isArray(obj) ? [] : {};
@@ -20,20 +13,15 @@
 //   return cloneTarget;
 // }
 
-// 方式三
-/**
- * @description
- *
- * @param {Object} obj - 要深克隆的对象
- * @returns {Object} - 深克隆后的对象
- */
+//! Method three
+const isObject = (obj) =>
+  // check if an object is a cloneable object(object or array)
+  (typeof obj === 'object' || typeof obj === 'function') && obj !== null;
 
-// 检查对象是否是一个可克隆的对象（对象或数组）
-const isObject = (obj) => (typeof obj === 'object' || typeof obj === 'function') && obj !== null;
-
-// 使用 new Map() 是强引用
+//? using `new Map()` creates a strong reference
 const deepClone = (obj, map = new WeakMap()) => {
-  // 检查对象是否已经被克隆过，如果是则直接返回原对象，避免无限递归
+  // check if the object has already been cloned
+  // if so, return the original object to avoid infinite
   if (map.get(obj)) return obj;
 
   if (isObject(obj)) {
@@ -64,9 +52,9 @@ const obj = {
   name: 'John',
   age: 20,
   info: {
-    city: 'New York',
+    city: 'New York'
   },
-  hobbies: ['coding', 'reading'],
+  hobbies: ['coding', 'reading']
 };
 
 const objClone = deepClone(obj);

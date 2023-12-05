@@ -7,8 +7,9 @@
 var throttle = function (fn, t) {
   let start = null;
   return function (...args) {
-    let now = +new Date(); // 保存当前时间
-    // 判断是不是第一次调用，以及防抖处理
+    let now = +new Date(); // save the current time
+    // 1.check if it is the first invocation
+    // 2.throttle handling
     if (start === null || now - start >= t) {
       fn(...args);
       start = now;

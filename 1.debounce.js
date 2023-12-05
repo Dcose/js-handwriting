@@ -4,12 +4,12 @@
  * @return {Function}
  */
 
-var debounce = function (fn, t) {
-  let timer = null; // 计时器标识符
+const debounce = function (fn, t) {
+  let timer = null; // timer identifier
   return function (...args) {
-    if (timer) clearTimeout(timer); // 判断是否在计时，存在就清除
+    if (timer) clearTimeout(timer); // check if a timer is running, and if it is, clear it
     timer = setTimeout(() => {
-      fn(...args); // 到这里说明计时已经大于 t 了，直接执行
+      fn(...args); // the timer has exceeded 't', proceed with the execution
     }, t);
   };
 };
