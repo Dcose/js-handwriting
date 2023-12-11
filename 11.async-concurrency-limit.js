@@ -15,43 +15,44 @@
  * @returns
  */
 function limit(count, array, iterateFunc) {
-  const tasks = []
-  const doingTasks = []
-  let i = 0
+  const tasks = [];
+  const doingTasks = [];
+  let i = 0;
 
   const enqueue = () => {
     // 如果任务都已处理完毕，则解析Promise并退出
     if (i === array.length) {
-      return Promise.resolve()
+      return Promise.resolve();
     }
 
     // 使用 iteratorFn 创建一个任务Promise，并将其推送到tasks数组中
-    const task = Promise.resolve().then(() => iterateFunc(array[i++]))
-    tasks.push(task)
+    const task = Promise.resolve().then(() => iterateFunc(array[i++]));
+    tasks.push(task);
 
     // 一旦任务完成，将其从doingTasks数组中移除
     const doing = task.then(() =>
       doingTasks.splice(doingTasks.indexOf(doing), 1)
-    )
+    );
 
     // 还未完成的任务就会被推入doingTasks中
-    doingTasks.push(doing)
+    doingTasks.push(doing);
 
     // 根据限制条件继续执行任务或等待任务完成后继续执行
     const res =
-      doingTasks.length >= count ? Promise.race(doingTasks) : Promise.resolve()
+      doingTasks.length >= count ? Promise.race(doingTasks) : Promise.resolve();
 
     // 递归调用 enqueue 函数以处理下一个任务
-    return res.then(enqueue)
-  }
+    return res.then(enqueue);
+  };
 
   // 通过 Promise.all 返回所有任务的结果
-  return enqueue().then(() => Promise.all(tasks))
+  return enqueue().then(() => Promise.all(tasks));
 }
 
 // Test Case
-const timeout = (i) => new Promise((resolve) => setTimeout(() => resolve(i), i))
+const timeout = (i) =>
+  new Promise((resolve) => setTimeout(() => resolve(i), i));
 
 limit(1, [1, 2, 3, 4], timeout).then((res) => {
-  console.log(res)
-})
+  console.log(res);
+});
