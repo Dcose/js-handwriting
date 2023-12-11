@@ -1,7 +1,6 @@
 /**
  *
- * extends
- * !注意
+ * @description extends
  * 1. 将原型指向需要继承的构造函数
  * 2. 调用被继承构造函数来生成实例
  */
@@ -26,5 +25,6 @@ function A(name, age) {
   //   return this
 }
 
+// Test Case
 let a = new A('Test', 17);
 console.log(a);

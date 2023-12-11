@@ -10,7 +10,6 @@ Array.prototype._filter = function (callback, thisArg) {
 };
 
 // Test Case
-
 const arr = [1, 2, 3, 4, 5];
 const res = arr._filter((item) => item % 2 === 0);
 console.log(res);

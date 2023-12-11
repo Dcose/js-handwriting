@@ -1,9 +1,7 @@
 /**
- * @description
- * 实例.__ptoto__ === 类.prototype
  *
- * @param {*} example
- * @param {*} classFunc
+ * @description
+ * 实例.__proto__ === 类.prototype
  */
 
 function myInstanceof(example, classFunc) {
@@ -12,7 +10,7 @@ function myInstanceof(example, classFunc) {
     // Object.prototype.__proto__ === null
     if (proto == null) return false; // 这个时候还没找到 返回 false
     if (proto == classFunc.prototype) return true;
-    proto = Object.getPrototypeOf(proto); // 沿着原型链__ptoto__一层一层向上查
+    proto = Object.getPrototypeOf(proto); // 沿着原型链__proto__一层一层向上查
   }
 }
 
@@ -31,3 +29,9 @@ console.log(myInstanceof({}, Object)); // true
 class Person {}
 const person = new Person();
 console.log(myInstanceof(person, Object)); // true
+
+//? 实例.__proto__ === 类.prototype
+console.log('res1', person.__proto__ === Person.prototype); // true
+
+//? 类.prototype.__proto__ === Object.prototype
+console.log('res2', Person.prototype.__proto__ === Object.prototype); // true

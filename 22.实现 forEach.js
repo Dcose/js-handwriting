@@ -4,6 +4,7 @@ Array.prototype._forEach = function (callback, thisArg) {
   }
 };
 
+// Test Case
 const arr = [1, 2, 3, 4];
 
 arr._forEach((item, index) => {

@@ -4,9 +4,7 @@ function getRandomInt(min, max) {
 
 /**
  *
- * @param {Array} list
- * @returns Array
- *
+ * @description
  * 快排的原理如下:
  * 随机选取一个数组中的值作为基准值，从左至右取值与基准值对比大小。
  * 比基准值小的放数组左边，大的放右边，对比完成后将基准值和第一个比基准值大的值交换位置。
@@ -27,6 +25,7 @@ function quickSort(list) {
   const left = [];
   const right = [];
 
+  // 小于基准点 放在左侧 反之放在右侧
   for (let i = 0; i < list.length; i++) {
     if (list[i] < pivot) {
       left.push(list[i]);
@@ -40,10 +39,10 @@ function quickSort(list) {
 }
 
 // Test Case
-// let case1 = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5]
-// let case2 = [9, 8, 7, 6, 5, 4, 3, 2, 1]
-// let case3 = []
+const case1 = [3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5];
+const case2 = [9, 8, 7, 6, 5, 4, 3, 2, 1];
+const case3 = [1];
 
-// console.log(quickSort(case1))
-// console.log(quickSort(case2))
-// console.log(quickSort(case3))
+console.log(quickSort(case1));
+console.log(quickSort(case2));
+console.log(quickSort(case3));

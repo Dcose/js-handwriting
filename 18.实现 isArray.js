@@ -3,4 +3,4 @@ Array._isArray = function (o) {
 };
 
 console.log(Array._isArray([])); // true
-console.log(Array._isArray({})); // true
+console.log(Array._isArray({})); // false [object Object]

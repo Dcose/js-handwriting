@@ -1,4 +1,6 @@
 /**
+ * @description
+ *
  * !关键点
  * *1. new promise 一经创建，立即执行
  * *2. 使用 Promise.resolve().then 可以把任务加到微任务队列，防止立即执行迭代方法
@@ -7,13 +9,6 @@
  * *5. 任务完成后，需要从 doingTasks 中移出
  */
 
-/**
- *
- * @param {Number} count // 同时执行的最大任务数
- * @param {Array} array // 执行的任务的数组
- * @param {*} iterateFunc // 用来处理数组中每个元素的函数
- * @returns
- */
 function limit(count, array, iterateFunc) {
   const tasks = [];
   const doingTasks = [];
@@ -21,9 +16,7 @@ function limit(count, array, iterateFunc) {
 
   const enqueue = () => {
     // 如果任务都已处理完毕，则解析Promise并退出
-    if (i === array.length) {
-      return Promise.resolve();
-    }
+    if (i === array.length) return Promise.resolve();
 
     // 使用 iteratorFn 创建一个任务Promise，并将其推送到tasks数组中
     const task = Promise.resolve().then(() => iterateFunc(array[i++]));
@@ -51,7 +44,7 @@ function limit(count, array, iterateFunc) {
 
 // Test Case
 const timeout = (i) =>
-  new Promise((resolve) => setTimeout(() => resolve(i), i));
+  new Promise((resolve) => setTimeout(() => resolve(i), i * 1000));
 
 limit(1, [1, 2, 3, 4], timeout).then((res) => {
   console.log(res);

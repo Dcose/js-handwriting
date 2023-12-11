@@ -1,15 +1,9 @@
-/**
- * @param {Function} fn
- * @param {number} t milliseconds
- * @return {Function}
- */
-
-var throttle = function (fn, t) {
+const throttle = function (fn, t) {
   let start = null;
   return function (...args) {
-    let now = +new Date(); // save the current time
-    // 1.check if it is the first invocation
-    // 2.throttle handling
+    let now = +new Date(); // 保存当前时间
+    // 1.检查是否第一次执行
+    // 2.节流处理
     if (start === null || now - start >= t) {
       fn(...args);
       start = now;
@@ -17,9 +11,8 @@ var throttle = function (fn, t) {
   };
 };
 
-/**
- * const log = throttle(console.log, 100);
- * log('Hello A'); // Logged immediately
- * log('Hello B'); // Ignored (within 100ms)
- * setTimeout(() => log('Hello C'), 101); // Hello C
- */
+// Test Case
+const log = throttle(console.log, 100);
+log('Hello A'); // Logged immediately
+log('Hello B'); // Ignored (within 100ms)
+setTimeout(() => log('Hello C'), 101); // Hello C

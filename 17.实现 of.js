@@ -1,7 +1,7 @@
 /**
- * *创建一个包含这些参数作为元素的新数组
  *
- * @returns []
+ * @description
+ * *创建一个包含这些参数作为元素的新数组
  */
 
 const t1 = Array(5); // 长度为 2 的空数组
@@ -17,5 +17,4 @@ function _of() {
 
 // Test Case
 const arr1 = _of(1, 3, 4);
-const arr2 = _of(1, 3, 4);
-const arr3 = _of(1, 3, 4);
+console.log(arr1);

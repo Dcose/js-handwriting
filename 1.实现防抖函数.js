@@ -1,22 +1,15 @@
-/**
- * @param {Function} fn
- * @param {number} t milliseconds
- * @return {Function}
- */
-
 const debounce = function (fn, t) {
-  let timer = null; // timer identifier
+  let timer = null; // 计时器标识符
   return function (...args) {
-    if (timer) clearTimeout(timer); // check if a timer is running, and if it is, clear it
+    if (timer) clearTimeout(timer); // 定时器存在 说明还没到定时 清除定时器
     timer = setTimeout(() => {
-      fn(...args); // the timer has exceeded 't', proceed with the execution
+      fn(...args); // 执行函数
     }, t);
   };
 };
 
-/**
- * const log = debounce(console.log, 100);
- * log('Hello'); // cancelled
- * log('Hello'); // cancelled
- * log('Hello'); // Logged at t=100ms
- */
+// Test Case
+const log = debounce(console.log, 100);
+log('Hello'); // cancelled
+log('Hello'); // cancelled
+log('Hello'); // Logged at t=100ms
